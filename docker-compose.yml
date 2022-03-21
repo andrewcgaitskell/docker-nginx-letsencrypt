@@ -6,4 +6,3 @@ web:
    - "8080:80"
   environment:
    - NGINX_HOST=test.dmtools.info
-   - NGINX_PORT=80

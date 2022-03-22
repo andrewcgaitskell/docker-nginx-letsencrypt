@@ -96,12 +96,12 @@ ubuntu 21.10
     RUN apt-get install nginx -y
     RUN apt-get install curl -y
     RUN apt-get update -y
-    RUN apt-get install software-properties-common
-    RUN add-apt-repository ppa:deadsnakes/ppa
-    RUN apt-get update
-    RUN apt-get install python3.8
-    RUN apt-get install certbot
-    RUN apt-get install python3-certbot-nginx
+    RUN apt-get install software-properties-common -y
+    RUN add-apt-repository ppa:deadsnakes/ppa -y
+    RUN apt-get update -y
+    RUN apt-get install python3.8 -y
+    RUN apt-get install certbot -y
+    RUN apt-get install python3-certbot-nginx -y
     
     #RUN certbot run -n --nginx --agree-tos -d www.example.com  -m  mygmailid@gmail.com  --redirect
     EXPOSE 80 # 443

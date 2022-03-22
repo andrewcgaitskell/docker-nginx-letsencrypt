@@ -103,5 +103,5 @@ ubuntu 21.10
     RUN apt-get install python3-certbot-nginx -y
     
     #RUN certbot run -n --nginx --agree-tos -d www.example.com  -m  mygmailid@gmail.com  --redirect
-    EXPOSE 80 # 443
+    EXPOSE 80
     CMD ["nginx", "-g", "daemon off;"]

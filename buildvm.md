@@ -77,3 +77,32 @@ ubuntu 21.10
     sudo docker run --name running-container-nginx-1 -d -p 8080:80 container-nginx-1
 
     sudo docker run --name running-container-nginx-1 -d -p 443:443 container-nginx-1
+
+# standard block server
+
+    /etc/nginx/conf.d directory named domain‑name.conf (so in our example, www.example.com.conf).
+
+    server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    server_name www.example.com;
+    }
+
+# create nginx Dockerfile
+    
+    FROM ubuntu:21.10
+    RUN apt-get update -y 
+    RUN apt-get install nginx -y
+    RUN apt-get install curl -y
+    RUN apt-get update -y
+    RUN apt-get install software-properties-common
+    RUN add-apt-repository ppa:deadsnakes/ppa
+    RUN apt-get update
+    RUN apt-get install python3.8
+    RUN apt-get install certbot
+    RUN apt-get install python3-certbot-nginx
+    
+    #RUN certbot run -n --nginx --agree-tos -d www.example.com  -m  mygmailid@gmail.com  --redirect
+    EXPOSE 80 # 443
+    CMD ["nginx", "-g", "daemon off;"]

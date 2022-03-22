@@ -133,3 +133,41 @@ ubuntu 21.10
     RUN certbot run -n --nginx --agree-tos -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
     EXPOSE 80 443
     CMD ["nginx", "-g", "daemon off;"]
+    
+    
+# web root
+
+Creating certificates
+
+docker run -it --rm \ 
+--volumes-from nginx \ 
+certbot/certbot certonly \ 
+--webroot \ 
+--webroot-path /var/www/html \ 
+--agree-tos \ 
+--staging \ 
+--dry-run \ 
+-m your@email.com \ 
+-d staging.vea.re
+
+I will go throug
+
+
+# create nginx Dockerfile - get cert
+    
+    FROM ubuntu:21.10
+    RUN apt-get update -y 
+    RUN apt-get install nginx -y
+    RUN apt-get install curl -y
+    RUN apt-get update -y
+    RUN apt-get install software-properties-common -y
+    RUN apt-get update -y
+    RUN apt-get install python3 -y
+    RUN apt-get install certbot -y
+    RUN apt-get install python3-certbot-nginx -y
+    COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
+    
+    RUN certbot run -n --nginx --webroot --webroot-path /var/www/html --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
+    EXPOSE 80 443
+    CMD ["nginx", "-g", "daemon off;"]
+    

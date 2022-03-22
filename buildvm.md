@@ -89,6 +89,15 @@ ubuntu 21.10
     server_name www.example.com;
     }
 
+# standard block server - test.dmtools.info.conf
+
+    server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    server_name test.dmtools.info;
+    }
+
 # create nginx Dockerfile
     
     FROM ubuntu:21.10
@@ -101,6 +110,7 @@ ubuntu 21.10
     RUN apt-get install python3 -y
     RUN apt-get install certbot -y
     RUN apt-get install python3-certbot-nginx -y
+    COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
     
     #RUN certbot run -n --nginx --agree-tos -d www.example.com  -m  mygmailid@gmail.com  --redirect
     EXPOSE 80

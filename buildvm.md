@@ -203,7 +203,7 @@ I will go throug
     COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
     COPY  ./index.html /var/www/html/test.dmtools.info
     
-    RUN certbot certonly --webroot --webroot-path /var/www/html --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
+    RUN certbot certonly --webroot --webroot-path /var/www/html/test.dmtools.info --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
     EXPOSE 80 443
     CMD ["nginx", "-g", "daemon off;"]
     

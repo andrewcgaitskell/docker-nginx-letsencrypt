@@ -171,3 +171,21 @@ I will go throug
     EXPOSE 80 443
     CMD ["nginx", "-g", "daemon off;"]
     
+# create nginx Dockerfile - get cert
+    
+    FROM ubuntu:21.10
+    RUN apt-get update -y 
+    RUN apt-get install nginx -y
+    RUN apt-get install curl -y
+    RUN apt-get update -y
+    RUN apt-get install software-properties-common -y
+    RUN apt-get update -y
+    RUN apt-get install python3 -y
+    RUN apt-get install certbot -y
+    RUN apt-get install python3-certbot-nginx -y
+    COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
+    
+    RUN certbot certonly --webroot --webroot-path /var/www/html --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
+    EXPOSE 80 443
+    CMD ["nginx", "-g", "daemon off;"]
+    

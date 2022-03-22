@@ -41,6 +41,13 @@ ubuntu 21.10
 
 # Clear all containers and images
 
+## To delete all containers including its volumes use,
+
+    sudo docker rm -vf $(sudo docker ps -aq)
+
+## To delete all the images,
+
+    sudo docker rmi -f $(sudo docker images -aq)
 
 
 # Make image from local file
@@ -51,4 +58,10 @@ ubuntu 21.10
 
     docker run -dp 80:80 my-nginx-im-1
     
-        
+# EXTRAS
+
+    sudo docker build -t container-nginx-1 .
+
+    sudo docker run --name running-container-nginx-1 -d -p 8080:80 container-nginx-1
+
+    sudo docker run --name running-container-nginx-1 -d -p 443:443 container-nginx-1

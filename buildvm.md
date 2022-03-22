@@ -101,10 +101,9 @@ ubuntu 21.10
 # standard block server - test.dmtools.info.conf
 
     server {
-    root     /var/www/test.dmtools.info;
-    location ^~ /.well-known/acme-challenge/ {
-    default_type "text/plain";
-    alias /var/www/acme-challenge/;
+    location /.well-known/acme-challenge/ {
+        alias /var/www/html/.well-known/acme-challenge/;
+    }
     }
 
 
@@ -203,7 +202,7 @@ I will go throug
     COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
     COPY  ./index.html /var/www/html/test.dmtools.info
     
-    RUN certbot certonly --webroot -w /var/www/html/test.dmtools.info --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
+    RUN certbot certonly --webroot -w /var/www/html --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
     EXPOSE 80 443
     CMD ["nginx", "-g", "daemon off;"]
     

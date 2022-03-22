@@ -6,6 +6,10 @@ ubuntu 21.10
     apt uodate
     apt upgrade -y
     apt install nginx -y
+    FROM ubuntu:21.10
+RUN apt-get update -y 
+RUN apt-get install nginx -y
+RUN apt-get install curl -y 
 
 # check nginx commands
 
@@ -30,6 +34,10 @@ ubuntu 21.10
     docker run -dp 80:80 docker/getting-started
     
 # create nginx Dockerfile
-
+    
+    FROM ubuntu:21.10
+    RUN apt-get update -y 
+    RUN apt-get install nginx -y
+    RUN apt-get install curl -y 
 
         

@@ -3,13 +3,11 @@ ubuntu 21.10
 # nginx
 
     sudo su
-    apt uodate
+    apt update
     apt upgrade -y
+    apt install curl -y
     apt install nginx -y
-    FROM ubuntu:21.10
-RUN apt-get update -y 
-RUN apt-get install nginx -y
-RUN apt-get install curl -y 
+  
 
 # check nginx commands
 

@@ -56,8 +56,18 @@ ubuntu 21.10
     
 # Run Image
 
-    docker run -dp 80:80 my-nginx-im-1
-    
+    docker run -dp 80:80 my-nginx-im-1 --name my-nginx-ct-1
+
+# List Running Containers
+
+    docker ps -a | grep my-nginx-ct-1
+
+# Check Logs
+
+    docker logs [OPTIONS] CONTAINER
+
+    docker logs my-nginx-ct-1
+
 # EXTRAS
 
     sudo docker build -t container-nginx-1 .

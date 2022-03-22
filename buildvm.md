@@ -98,7 +98,7 @@ ubuntu 21.10
     server_name test.dmtools.info;
     }
 
-# create nginx Dockerfile
+# create nginx Dockerfile - no cert
     
     FROM ubuntu:21.10
     RUN apt-get update -y 
@@ -114,4 +114,22 @@ ubuntu 21.10
     
     #RUN certbot run -n --nginx --agree-tos -d www.example.com  -m  mygmailid@gmail.com  --redirect
     EXPOSE 80
+    CMD ["nginx", "-g", "daemon off;"]
+    
+# create nginx Dockerfile - get cert
+    
+    FROM ubuntu:21.10
+    RUN apt-get update -y 
+    RUN apt-get install nginx -y
+    RUN apt-get install curl -y
+    RUN apt-get update -y
+    RUN apt-get install software-properties-common -y
+    RUN apt-get update -y
+    RUN apt-get install python3 -y
+    RUN apt-get install certbot -y
+    RUN apt-get install python3-certbot-nginx -y
+    COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
+    
+    RUN certbot run -n --nginx --agree-tos -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
+    EXPOSE 80 443
     CMD ["nginx", "-g", "daemon off;"]

@@ -92,8 +92,8 @@ ubuntu 21.10
 # standard block server - test.dmtools.info.conf
 
     server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+    listen 80;
+    listen [::]:80;
     root /var/www/html;
     server_name test.dmtools.info;
     }

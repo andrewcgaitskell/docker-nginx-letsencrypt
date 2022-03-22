@@ -38,6 +38,8 @@ RUN apt-get install curl -y
     FROM ubuntu:21.10
     RUN apt-get update -y 
     RUN apt-get install nginx -y
-    RUN apt-get install curl -y 
+    RUN apt-get install curl -y
+    EXPOSE 80
+    
 
         

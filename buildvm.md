@@ -38,6 +38,17 @@ ubuntu 21.10
     RUN apt-get install nginx -y
     RUN apt-get install curl -y
     EXPOSE 80
-    
 
+# Clear all containers and images
+
+
+
+# Make image from local file
+
+    docker build -t my-nginx-im-1 .
+    
+# Run Image
+
+    docker run -dp 80:80 my-nginx-im-1
+    
         

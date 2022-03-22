@@ -97,9 +97,8 @@ ubuntu 21.10
     RUN apt-get install curl -y
     RUN apt-get update -y
     RUN apt-get install software-properties-common -y
-    RUN add-apt-repository ppa:deadsnakes/ppa -y
     RUN apt-get update -y
-    RUN apt-get install python3.8 -y
+    RUN apt-get install python3 -y
     RUN apt-get install certbot -y
     RUN apt-get install python3-certbot-nginx -y
     

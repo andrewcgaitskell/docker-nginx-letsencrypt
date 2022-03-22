@@ -83,6 +83,15 @@ ubuntu 21.10
     /etc/nginx/conf.d directory named domain‑name.conf (so in our example, www.example.com.conf).
 
     server {
+  root     /var/www/example.com;
+  location ^~ /.well-known/acme-challenge/ {
+    default_type "text/plain";
+  alias /var/www/acme-challenge/;
+}
+
+
+
+    server {
     listen 80 default_server;
     listen [::]:80 default_server;
     root /var/www/html;
@@ -92,9 +101,17 @@ ubuntu 21.10
 # standard block server - test.dmtools.info.conf
 
     server {
+    root     /var/www/test.dmtools.info;
+    location ^~ /.well-known/acme-challenge/ {
+    default_type "text/plain";
+    alias /var/www/acme-challenge/;
+    }
+
+
+    server {
     listen 80;
     listen [::]:80;
-    root /var/www/html;
+    root /var/www/html/test.dmtools.info;
     server_name test.dmtools.info;
     }
 
@@ -184,6 +201,7 @@ I will go throug
     RUN apt-get install certbot -y
     RUN apt-get install python3-certbot-nginx -y
     COPY  ./test.dmtools.info.conf /etc/nginx/conf.d
+    COPY  ./index.html /var/www/html/test.dmtools.info
     
     RUN certbot certonly --webroot --webroot-path /var/www/html --agree-tos --staging --dry-run -d test.dmtools.info  -m  andrew@gaitskell.com  --redirect
     EXPOSE 80 443

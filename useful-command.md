@@ -13,6 +13,8 @@ sudo docker build -t container-nginx-1 .
 
 sudo docker run --name running-container-nginx-1 -d -p 8080:80 container-nginx-1
 
+sudo docker run --name running-container-nginx-1 -d -p 443:443 container-nginx-1
+
 # nginx
 
     sudo nginx -t

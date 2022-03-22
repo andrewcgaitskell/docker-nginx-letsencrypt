@@ -38,6 +38,8 @@ ubuntu 21.10
     RUN apt-get install nginx -y
     RUN apt-get install curl -y
     EXPOSE 80
+    ##EXPOSE 80 443
+    CMD ["nginx", "-g", "daemon off;"]
 
 # Clear all containers and images
 

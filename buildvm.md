@@ -56,7 +56,7 @@ ubuntu 21.10
     
 # Run Image
 
-    docker run -dp 80:80 my-nginx-im-1 --name my-nginx-ct-1
+    sudo docker run --name my-nginx-ct-1 -d -p 80:80 my-nginx-im-1
 
 # List Running Containers
 

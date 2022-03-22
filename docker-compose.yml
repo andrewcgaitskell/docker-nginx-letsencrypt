@@ -1,8 +1,8 @@
-version: "3.8"
+version: "3.9"
 services:
-  nginx:
+  web:
     build: .
-    
     ports:
-        - "443:443"
-    restart: always
+      - "443:443"
+  redis:
+    image: "redis:alpine"

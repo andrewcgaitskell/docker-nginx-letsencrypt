@@ -213,3 +213,11 @@ I will go throug
     EXPOSE 80 443
     CMD ["nginx", "-g", "daemon off;"]
     
+# tried ready made
+
+# now looking at node and how to connect containers
+
+    apt update
+    apt install nodejs npm
+    
+    

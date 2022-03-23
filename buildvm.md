@@ -1,4 +1,5 @@
 ubuntu 21.10
+make sure port forwarding is enabled
 
 # nginx
 
@@ -30,7 +31,13 @@ ubuntu 21.10
 # test docker
 
     docker run -dp 80:80 docker/getting-started
-    
+
+# install docker compose
+
+    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    docker-compose --version
+
 # create nginx Dockerfile
     
     FROM ubuntu:21.10

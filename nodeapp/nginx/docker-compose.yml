@@ -1,5 +1,7 @@
 web:
   image: nginx:latest
+    container_name: node-web-app1-c1
+    restart: unless-stopped
   ports:
    - "8080:80"
   environment:

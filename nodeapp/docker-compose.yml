@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: acg/node-web-app1
-    container_name: acg/node-web-app1-c1
+    container_name: node-web-app1-c1
     restart: unless-stopped
     ports:
       - "80:8080"

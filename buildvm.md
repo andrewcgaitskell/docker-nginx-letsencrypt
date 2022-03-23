@@ -215,8 +215,13 @@ I will go throug
     
 # tried ready made
 
+https://github.com/andrewcgaitskell/nginx-certbot
+
+did not work - too many redirects
+
 # now looking at node and how to connect containers
 
+    sudo su
     apt update
     apt install nodejs npm
     

@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  node1:
+  nodejs:
     restart: on-failure
     build: ./node
     ports:

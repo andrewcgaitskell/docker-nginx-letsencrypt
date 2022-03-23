@@ -1,7 +1,10 @@
-version: '3.8'
 services:
-  web:
-    build: .
-    command: npm run dev
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: acg/node-web-app1
+    container_name: acg/node-web-app1-c1
+    restart: unless-stopped
     ports:
       - "80:8080"

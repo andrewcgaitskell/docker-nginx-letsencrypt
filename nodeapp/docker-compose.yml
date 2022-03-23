@@ -3,8 +3,6 @@ services:
   nodejs:
     restart: on-failure
     build: ./node
-    ports:
-      - '81:5000'
     networks:
       - app-network
   nginx:
@@ -15,3 +13,7 @@ services:
     - nodejs
     networks:
       - app-network
+
+networks:
+  app-network:
+    driver: bridge

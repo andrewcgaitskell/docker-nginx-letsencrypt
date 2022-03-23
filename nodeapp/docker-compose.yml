@@ -5,9 +5,13 @@ services:
     build: ./node
     ports:
       - '81:5000'
+    networks:
+      - app-network
   nginx:
     build: ./nginx
     ports:
     - '80:80'
     depends_on:
-    - node1
+    - nodejs
+    networks:
+      - app-network

@@ -1,0 +1,12 @@
+[Unit]
+Description=node.js hello world!
+After=network.target 
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/node /home/andrew_gaitskell/nodeapp/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

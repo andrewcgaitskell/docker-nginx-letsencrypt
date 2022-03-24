@@ -15,3 +15,7 @@ python3 -m venv env
 download
 
 /home/andrew_gaitskell/jupyterhub/jupyterhub_config.py
+
+## start & stop service
+
+sudo systemctl stop jupyterhub

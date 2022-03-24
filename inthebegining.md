@@ -6,9 +6,15 @@
 
 ## 3 Install jupyterlab as local host app
 
+## 3.1 Configure Security
+
 ## 4 Configure NGINX to serve jupyterlab
 
+https://jupyterhub.readthedocs.io/en/stable/reference/config-proxy.html
+
 ## 5 Create Dash Server
+
+Multi Page App
 
 ## 6 Add Dash Server to NGINX config
 

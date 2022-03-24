@@ -19,6 +19,41 @@ make sure port forwarding is enabled
     sudo systemctl start nginx
     sudo systemctl status nginx
 
+# remove default conf files
+
+    rm /etc/nginx/sites-enabled/default
+    rm /etc/nginx/sites-available/default
+
+# add default to conf.d folder
+
+    nano /etc/nginx/conf.d/default.conf
+    
+    #
+    # The default server
+    #
+    server {
+        listen       80;
+        server_name  _;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.php index.html index.htm;
+        }
+
+        error_page  404              /404.html;
+        location = /404.html {
+            root   /usr/share/nginx/html;
+        }
+
+        # redirect server error pages to the static page /50x.html
+        #
+        }
+    
+
 # stop nginx
 
     sudo systemctl stop nginx

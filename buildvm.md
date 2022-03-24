@@ -54,9 +54,20 @@ make sure port forwarding is enabled
         }
     
 
-# stop nginx
+# check nginx config and reload
 
-    sudo systemctl stop nginx
+    sudo nginx -t
+    sudo nginx -s reload
+
+
+# install node
+
+# now looking at node and how to connect containers
+
+    apt update
+    apt install nodejs npm
+
+
 
 # install docker
 

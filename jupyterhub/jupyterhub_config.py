@@ -1,81 +1,11 @@
-## The date format used by logging formatters for %(asctime)s
-#  Default: '%Y-%m-%d %H:%M:%S'
-# c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
-
-## The Logging format template
-#  Default: '[%(name)s]%(highlevel)s %(message)s'
+c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
 c.Application.log_format = '[%(name)s]%(highlevel)s %(message)s'
-
-## Set the log level by value or name.
-#  Choices: any of [0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL']
-#  Default: 30
 c.Application.log_level = 30
 
-#  Currently installed: 
-#    - default: jupyterhub.auth.PAMAuthenticator
-#    - dummy: jupyterhub.auth.DummyAuthenticator
-#    - null: jupyterhub.auth.NullAuthenticator
-#    - pam: jupyterhub.auth.PAMAuthenticator
-#  Default: 'jupyterhub.auth.PAMAuthenticator'
-# c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
+c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
 
-## The base URL of the entire application.
-#  
-#          Add this to the beginning of all JupyterHub URLs.
-#          Use base_url to run JupyterHub within an existing website.
-#  
-#          .. deprecated: 0.9
-#              Use JupyterHub.bind_url
-#  Default: '/'
-# c.JupyterHub.base_url = '/'
-
-## The public facing URL of the whole JupyterHub application.
-#  
-#          This is the address on which the proxy will bind.
-#          Sets protocol, ip, base_url
-#  Default: 'http://:8000'
 c.JupyterHub.bind_url = 'http://:5050'
 
-## Whether to shutdown the proxy when the Hub shuts down.
-#  
-#          Disable if you want to be able to teardown the Hub while leaving the
-#  proxy running.
-#  
-#          Only valid if the proxy was starting by the Hub process.
-#  
-#          If both this and cleanup_servers are False, sending SIGINT to the Hub will
-#          only shutdown the Hub, leaving everything else running.
-#  
-#          The Hub should be able to resume from database state.
-#  Default: True
-# c.JupyterHub.cleanup_proxy = True
-
-## Whether to shutdown single-user servers when the Hub shuts down.
-#  
-#          Disable if you want to be able to teardown the Hub while leaving the
-#  single-user servers running.
-#  
-#          If both this and cleanup_proxy are False, sending SIGINT to the Hub will
-#          only shutdown the Hub, leaving everything else running.
-#  
-#          The Hub should be able to resume from database state.
-#  Default: True
-# c.JupyterHub.cleanup_servers = True
-
-## Maximum number of concurrent users that can be spawning at a time.
-#  
-#  Spawning lots of servers at the same time can cause performance problems for
-#  the Hub or the underlying spawning system. Set this limit to prevent bursts of
-#  logins from attempting to spawn too many servers at the same time.
-#  
-#  This does not limit the number of total running servers. See
-#  active_server_limit for that.
-#  
-#  If more than this many users attempt to spawn at a time, their requests will
-#  be rejected with a 429 error asking them to try again. Users will have to wait
-#  for some of the spawning services to finish starting before they can start
-#  their own.
-#  
 #  If set to 0, no limit is enforced.
 #  Default: 100
 # c.JupyterHub.concurrent_spawn_limit = 100
@@ -117,16 +47,7 @@ c.JupyterHub.db_url = 'sqlite:///jupyterhub.sqlite'
 
 ## log all database transactions. This has A LOT of output
 #  Default: False
-# c.JupyterHub.debug_db = False
-
-## DEPRECATED since version 0.8: Use ConfigurableHTTPProxy.debug
-#  Default: False
-# c.JupyterHub.debug_proxy = False
-
-## If named servers are enabled, default name of server to spawn or open, e.g. by
-#  user-redirect.
-#  Default: ''
-# c.JupyterHub.default_server_name = ''
+c.JupyterHub.debug_db = False
 
 ## The default URL for users when they arrive (e.g. when user directs to "/")
 #  
@@ -137,13 +58,14 @@ c.JupyterHub.db_url = 'sqlite:///jupyterhub.sqlite'
 #  
 #  ::
 #  
-#      def default_url_fn(handler):
-#          user = handler.current_user
-#          if user and user.admin:
-#              return '/hub/admin'
-#          return '/hub/home'
-#  
-#      c.JupyterHub.default_url = default_url_fn
+def default_url_fn(handler):
+    user = handler.current_user
+    if user and user.admin:
+        return '/hub/admin'
+    return '/hub/home'
+
+c.JupyterHub.default_url = default_url_fn
+
 #  Default: traitlets.Undefined
 # c.JupyterHub.default_url = traitlets.Undefined
 
@@ -177,16 +99,6 @@ c.JupyterHub.db_url = 'sqlite:///jupyterhub.sqlite'
 #  Default: ''
 # c.JupyterHub.hub_connect_ip = ''
 
-## DEPRECATED
-#  
-#  Use hub_connect_url
-#  
-#  .. versionadded:: 0.8
-#  
-#  .. deprecated:: 0.9
-#      Use hub_connect_url
-#  Default: 0
-# c.JupyterHub.hub_connect_port = 0
 
 ## The URL for connecting to the Hub. Spawners, services, and the proxy will use
 #  this URL to talk to the Hub.
@@ -283,33 +195,6 @@ c.JupyterHub.hub_routespec = '/hub/'
 #  Default: 'internal-ssl'
 # c.JupyterHub.internal_certs_location = 'internal-ssl'
 
-## Enable SSL for all internal communication
-#  
-#          This enables end-to-end encryption between all JupyterHub components.
-#          JupyterHub will automatically create the necessary certificate
-#          authority and sign notebook certificates as they're created.
-#  Default: False
-# c.JupyterHub.internal_ssl = False
-
-## The public facing ip of the whole JupyterHub application
-#          (specifically referred to as the proxy).
-#  
-#          This is the address on which the proxy will listen. The default is to
-#          listen on all interfaces. This is the only address through which JupyterHub
-#          should be accessed by users.
-#  
-#          .. deprecated: 0.9
-#              Use JupyterHub.bind_url
-#  Default: ''
-# c.JupyterHub.ip = ''
-
-## Supply extra arguments that will be passed to Jinja environment.
-#  Default: {}
-# c.JupyterHub.jinja_environment_options = {}
-
-## Interval (in seconds) at which to update last-activity timestamps.
-#  Default: 300
-# c.JupyterHub.last_activity_interval = 300
 
 ## Dict of 'group': ['usernames'] to load at startup.
 #  
@@ -412,7 +297,8 @@ c.JupyterHub.hub_routespec = '/hub/'
 #  - You can set this to `/lab` to have JupyterLab start by default, rather than Jupyter Notebook.
 #  Default: ''
 c.notebook_dir = '/'
-c.Spawner.default_url = '/tree/home/{username}'
+#c.Spawner.default_url = '/tree/home/{username}'
+c.Spawner.default_url = '/lab/home/{username}'
 
 ## Disable per-user configuration of single-user servers.
 #  

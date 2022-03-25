@@ -153,7 +153,7 @@ c.JupyterHub.hub_port = 8081
 #  
 #  .. versionadded:: 1.4
 #  Default: '/'
-c.JupyterHub.hub_routespec = '/hub/'
+c.JupyterHub.hub_routespec = '/'
 
 ## Trigger implicit spawns after this many seconds.
 #  

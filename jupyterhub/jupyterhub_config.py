@@ -60,13 +60,13 @@ c.JupyterHub.debug_db = False
 #  
 #  ::
 #  
-def default_url_fn(handler):
-    user = handler.current_user
-    if user and user.admin:
-        return '/hub/admin'
-    return '/hub/home'
+#def default_url_fn(handler):
+#    user = handler.current_user
+#    if user and user.admin:
+#        return '/hub/admin'
+#    return '/hub/home'
 
-c.JupyterHub.default_url = default_url_fn
+#c.JupyterHub.default_url = default_url_fn
 
 #  Default: traitlets.Undefined
 # c.JupyterHub.default_url = traitlets.Undefined
@@ -136,7 +136,7 @@ c.JupyterHub.hub_ip = '127.0.0.1'
 #          See also `hub_ip` for the ip and `hub_bind_url` for setting the full
 #  bind URL.
 #  Default: 8081
-c.JupyterHub.hub_port = 8081
+#c.JupyterHub.hub_port = 8081
 
 ## The routing prefix for the Hub itself.
 #  
@@ -155,7 +155,7 @@ c.JupyterHub.hub_port = 8081
 #  
 #  .. versionadded:: 1.4
 #  Default: '/'
-c.JupyterHub.hub_routespec = '/'
+# c.JupyterHub.hub_routespec = '/'
 
 ## Trigger implicit spawns after this many seconds.
 #  
@@ -298,9 +298,9 @@ c.JupyterHub.hub_routespec = '/'
 #  - Start with `/notebooks` instead of `/tree` if `default_url` points to a notebook instead of a directory.
 #  - You can set this to `/lab` to have JupyterLab start by default, rather than Jupyter Notebook.
 #  Default: ''
-c.notebook_dir = '/'
+#c.notebook_dir = '/'
 #c.Spawner.default_url = '/tree/home/{username}'
-c.Spawner.default_url = '/lab/home/{username}'
+#c.Spawner.default_url = '/lab/home/{username}'
 
 ## Disable per-user configuration of single-user servers.
 #  

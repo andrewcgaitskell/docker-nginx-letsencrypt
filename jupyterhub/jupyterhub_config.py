@@ -25,7 +25,7 @@ c.JupyterHub.cookie_max_age_days = 14
 #  
 #          Should be exactly 256 bits (32 bytes).
 #  Default: traitlets.Undefined
-c.JupyterHub.cookie_secret = traitlets.Undefined
+# c.JupyterHub.cookie_secret = traitlets.Undefined
 
 ## File in which to store the cookie secret.
 #  Default: 'jupyterhub_cookie_secret'

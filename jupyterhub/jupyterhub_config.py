@@ -4,7 +4,8 @@ c.Application.log_level = 30
 
 c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
 
-c.JupyterHub.bind_url = 'http://:5050/hub/'
+c.JupyterHub.bind_url = 'http://127.0.0.1:5050'
+
 ## match to /etc/nginx/conf.d/default.conf
 
 #  If set to 0, no limit is enforced.

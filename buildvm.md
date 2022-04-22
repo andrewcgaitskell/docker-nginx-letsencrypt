@@ -85,7 +85,7 @@ cd /etc/nginx/conf.d
 nano dev1.dmtools.info.conf
 
 
-server {
+    server {
     listen 80 default_server;
     listen [::]:80 default_server;
     root /var/www/dev1.dmtools.info/html;

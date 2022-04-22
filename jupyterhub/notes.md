@@ -31,6 +31,11 @@ download
 
 /home/andrew_gaitskell/jupyterhub/jupyterhub_config.py
 
+## create service
+
+nano /lib/systemd/system/jupyterhub.service
+
+
 ## start & stop service
 
 sudo systemctl stop jupyterhub

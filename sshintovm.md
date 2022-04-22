@@ -11,6 +11,6 @@ remove key202203251421.pub at start
 
 connect to vm
 
-ssh -i ~/.ssh/key202203251421 andrew_gaitskell@35.214.5.254
+ssh -i ~/.ssh/key202204220954 andrew_gaitskell@35.214.5.254
 
 

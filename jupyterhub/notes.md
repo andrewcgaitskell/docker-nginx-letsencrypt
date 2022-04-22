@@ -11,6 +11,10 @@ cd jupyterhub
 
 python3 -m venv env
 
+# activate env
+
+source venv/bin/activate
+
 
 download
 

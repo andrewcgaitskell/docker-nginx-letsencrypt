@@ -1,9 +1,9 @@
 
-ssh-keygen -t rsa -f ~/.ssh/key202203251421 -C andrew_gaitskell -b 2048
+ssh-keygen -t rsa -f ~/.ssh/key202204220954 -C andrew_gaitskell -b 2048
 
 cd ~/.ssh
 
-cat key202203251421.pub
+cat key202204220954.pub
 
 copy output and paste into VM ssh keys
 

@@ -15,6 +15,8 @@ https://www.tecmint.com/create-first-nodejs-app-in-linux/
     
     npm install express
     
+    open 8080 port for VM
+    
     node server.js
     OR
     npm start

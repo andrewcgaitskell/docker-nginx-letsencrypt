@@ -13,6 +13,8 @@ https://www.tecmint.com/create-first-nodejs-app-in-linux/
 
     nano server.js
     
+    npm install express
+    
     node server.js
     OR
     npm start

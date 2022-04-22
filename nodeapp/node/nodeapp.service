@@ -1,11 +1,11 @@
 [Unit]
-Description=node.js hello world!
+Description=node js hello world!
 After=network.target 
 
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/bin/node nodeapp/server.js
+ExecStart=/usr/bin/node /var/www/nodeapp/server.js
 Restart=on-failure
 
 [Install]

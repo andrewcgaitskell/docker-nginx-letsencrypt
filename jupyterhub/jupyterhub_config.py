@@ -37,7 +37,7 @@ c.JupyterHub.cookie_secret_file = 'jupyterhub_cookie_secret'
 ## The location of jupyterhub data files (e.g. /usr/local/share/jupyterhub)
 #  Default: '/home/andrew_gaitskell/jupyterhub/env/share/jupyterhub'
 
-c.JupyterHub.data_files_path = '/home/andrew_gaitskell/jupyterhub/env/share/jupyterhub'
+c.JupyterHub.data_files_path = '/var/www/jupyterhub/env/share/jupyterhub'
 
 ## Include any kwargs to pass to the database connection.
 #          See sqlalchemy.create_engine for details.

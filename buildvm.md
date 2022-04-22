@@ -88,9 +88,50 @@ nano dev1.dmtools.info.conf
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    root /var/www/html;
-    server_name edev1.dmtools.info;
-}
+    root /var/www/dev1.dmtools.info/html;
+    server_name dev1.dmtools.info;
+
+    #charset koi8-r;
+
+    #access_log  logs/host.access.log  main;
+
+    location / {
+        root /var/www/dev1.dmtools.info/html;
+        index  index.html;
+    }
+
+    location /hello/ {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:8080/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        # location /overview {
+        #     proxy_pass http://127.0.0.1:3000$request_uri;
+        #     proxy_redirect off;
+        # }
+    }
+
+
+    location /dev/ {
+        proxy_pass http://localhost:5050/dev/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    error_page  404              /404.html;
+    location = /404.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # redirect server error pages to the static page /50x.html
+    #
+    }
+
 
 certbot --nginx -d dev1.dmtools.info
 

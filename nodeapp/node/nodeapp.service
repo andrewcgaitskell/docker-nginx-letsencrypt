@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/bin/node /home/andrew_gaitskell/nodeapp/server.js
+ExecStart=/usr/bin/node nodeapp/server.js
 Restart=on-failure
 
 [Install]

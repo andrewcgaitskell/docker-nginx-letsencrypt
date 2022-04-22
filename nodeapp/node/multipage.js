@@ -6,12 +6,6 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 http.createServer(function(req,res){
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.write(req.url);
-      res.end();		
-      }).listen(PORT, HOST);
-
-http.createServer(function(req,res){
 	//store URL in variable q_string
 
 	var q_string = req.url;

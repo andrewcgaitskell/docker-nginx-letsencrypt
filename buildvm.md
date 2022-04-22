@@ -78,5 +78,19 @@ apt install certbot python3-certbot-nginx
 
 https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/
 
+sudo su
+
+cd /etc/nginx/conf.d
+
+nano dev1.dmtools.info.conf
+
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    server_name edev1.dmtools.info;
+}
+
 certbot --nginx -d dev1.dmtools.info
 

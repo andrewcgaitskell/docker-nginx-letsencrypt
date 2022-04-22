@@ -68,6 +68,14 @@ make sure port forwarding is enabled
     apt install nodejs npm
 
 
+# install venv
 
+# activate venv
+
+# letsencrypt
+
+apt install certbot python3-certbot-nginx
+
+certbot --nginx -d dev1.dmtools.info
     
     

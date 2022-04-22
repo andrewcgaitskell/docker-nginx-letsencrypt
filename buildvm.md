@@ -135,3 +135,17 @@ nano dev1.dmtools.info.conf
 
 certbot --nginx -d dev1.dmtools.info
 
+
+location = /dev/hub/oauth_callback {
+    proxy_pass http://localhost:5050/dev/hub/oauth_callback;
+
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # WebSocket support
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_redirect https,http https;
+
+}

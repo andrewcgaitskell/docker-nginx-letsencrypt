@@ -15,6 +15,17 @@ python3 -m venv env
 
 source venv/bin/activate
 
+# install jupyterhub
+
+https://jupyterhub.readthedocs.io/en/stable/quickstart.html
+
+python3 -m pip install jupyterhub
+
+npm install -g configurable-http-proxy
+
+python3 -m pip install jupyterlab notebook  # needed if running the notebook servers in the same environment
+
+
 
 download
 

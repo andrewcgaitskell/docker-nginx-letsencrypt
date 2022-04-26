@@ -14,7 +14,7 @@ c.JupyterHub.bind_url = 'http://:5050/'
 
 ## The config file to load
 #  Default: 'jupyterhub_config.py'
-c.JupyterHub.config_file = 'jupyterhub_config.py'
+c.JupyterHub.config_file = '/home/jupyterhub/jupyterhub_config.py'
 
 ## Number of days for a login cookie to be valid.
 #          Default is two weeks.

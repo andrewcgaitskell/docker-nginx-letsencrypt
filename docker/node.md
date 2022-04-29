@@ -79,6 +79,47 @@ docker run --name nodejs-image-demo-c1 -p 80:8080 -d my-nodeapp-im-1
             proxy_pass http://nodeserver:5000;
         }
     }
+ 
+ # https default
+ 
+     http {
+        server_tokens off;
+        charset utf-8;
+
+        # always redirect to https
+        server {
+            listen 80 default_server;
+
+            server_name _;
+
+            return 301 https://$host$request_uri;
+        }
+
+        server {
+            listen 443 ssl http2;
+            # use the certificates
+            ssl_certificate     /etc/letsencrypt/live/dev3.dmtools.info/fullchain.pem;
+            ssl_certificate_key /etc/letsencrypt/live/dev3.dmtools.info/privkey.pem;
+            server_name dev3.dmtools.info;
+            root /var/www/html;
+            index index.php index.html index.htm;
+
+
+            location / {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_pass http://nodeserver:5000;
+            }
+
+
+            location ~ /.well-known/acme-challenge/ {
+                root /var/www/certbot;
+            }
+            }
+        }
 
 
 # docker-compose.yml
@@ -97,3 +138,36 @@ docker run --name nodejs-image-demo-c1 -p 80:8080 -d my-nodeapp-im-1
             ports:
                 - "80:80"  
 
+# Enabling LetsEncrypt
+
+# default.conf
+
+    server {
+        location / {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_pass http://nodeserver:5000;
+        }
+    }
+
+
+# docker-compose.yml
+
+    version: "3.8"
+    services:
+        nodeserver:
+            build:
+                context: ./nodeapp1
+            ports:
+                - "5000:5000"
+        nginx:
+            restart: always
+            build:
+                context: ./nginx1
+            ports:
+                - "80:80"  
+                - "443:443"
+                

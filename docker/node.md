@@ -83,17 +83,17 @@ docker run --name nodejs-image-demo-c1 -p 80:8080 -d my-nodeapp-im-1
 
 # docker-compose.yml
 
-version: "3.8"
-services:
-    nodeserver:
-        build:
-            context: ./nodeapp1
-        ports:
-            - "5000:5000"
-    nginx:
-        restart: always
-        build:
-            context: ./nginx1
-        ports:
-            - "80:80"  
+    version: "3.8"
+    services:
+        nodeserver:
+            build:
+                context: ./nodeapp1
+            ports:
+                - "5000:5000"
+        nginx:
+            restart: always
+            build:
+                context: ./nginx1
+            ports:
+                - "80:80"  
 

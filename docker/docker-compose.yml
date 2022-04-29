@@ -1,5 +1,5 @@
 services:
-    blog:
+    nodeapp1:
         container_name: nodeapp-c1
         image: node
         ports:

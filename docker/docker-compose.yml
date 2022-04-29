@@ -1,0 +1,9 @@
+services:
+    blog:
+        container_name: nodeapp-c1
+        image: node
+        ports:
+            - 3000:3000
+        volumes:
+            - ./nodeapp1/:/app/
+        command: bash -c "cd /app && node build"

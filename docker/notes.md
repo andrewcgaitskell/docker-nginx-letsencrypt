@@ -3,7 +3,11 @@
 
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
-    
+
+# investigate rootless
+
+    https://docs.docker.com/engine/security/rootless/
+ 
 # test docker
 
     docker run -dp 80:80 docker/getting-started

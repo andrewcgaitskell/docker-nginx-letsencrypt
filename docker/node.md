@@ -29,7 +29,7 @@ https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#docker-run
     //        res.end('Hello World!');
 
 
-# Dockerfile
+# Dockerfile - nodeapp1
 
     FROM node:16
 
@@ -61,4 +61,39 @@ sudo docker rm -vf $(sudo docker ps -aq)
 docker build -t my-nodeapp-im-1 .
 
 docker run --name nodejs-image-demo-c1 -p 80:8080 -d my-nodeapp-im-1
+
+# nginx dockerfile
+
+FROM nginx
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+# default.conf
+
+server {
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_pass http://nodeserver:5000;
+    }
+}
+
+
+# docker-compose.yml
+
+version: "3.8"
+services:
+    nodeserver:
+        build:
+            context: ./nodeapp1
+        ports:
+            - "5000:5000"
+    nginx:
+        restart: always
+        build:
+            context: ./nginx1
+        ports:
+            - "80:80"  
 

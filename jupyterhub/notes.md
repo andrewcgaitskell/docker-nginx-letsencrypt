@@ -39,3 +39,48 @@ nano /lib/systemd/system/jupyterhub.service
 ## start & stop service
 
 sudo systemctl stop jupyterhub
+
+# create shared folder
+
+cd  /usr/local/share
+
+sudo groupadd jupyterhub
+
+sudo usermod -a -G jupyterhub
+
+sudo chgrp -R jupyterhub /usr/local/share/jupyterhub
+
+sudo chmod -R 2775 /usr/local/share/jupyterhub
+
+
+sudo usermod -a -G jupyterhub jupyterhub
+
+
+python3 -m venv env
+
+source env/bin/activate
+
+
+pip install jupyterhub
+
+pip install jupyterlab notebook
+
+jupyterhub --generate-config
+
+jupyter --data-dir
+
+
+nano /lib/systemd/system/jupyterhub.service
+
+source env/bin/activate
+
+pip install jupyterhub
+
+sudo journalctl -u jupyterhub -n 100 --no-pager
+
+
+sudo systemctl status jupyterhub
+
+pip install jupyterhub-firstuseauthenticator
+
+nano jupyterhub_config.py

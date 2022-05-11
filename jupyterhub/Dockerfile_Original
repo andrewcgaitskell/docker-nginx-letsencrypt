@@ -1,0 +1,57 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get -y update \
+    && apt-get install -y apt-utils dialog \
+    && apt-get install -y build-essential python3.10 python3-pip python3-dev \
+    && apt-get -y install nodejs npm \
+    && apt-get -y install python3.10-venv
+
+RUN npm install -g configurable-http-proxy
+
+RUN mkdir src
+RUN mkdir src/jupyterhub
+
+
+ARG user=jupyterhub
+ARG home=/home/$user
+RUN addgroup --system docker
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home $home \
+    --ingroup docker \
+    $user
+
+RUN echo "jupyterhub:jupyterhub" | chpasswd
+
+RUN usermod -aG sudo jupyterhub
+
+RUN groupadd jupyterhub
+
+RUN usermod -aG jupyterhub jupyterhub
+
+RUN chgrp -R jupyterhub /src
+
+RUN chmod -R 2775 /src
+
+#USER jupyterhub
+
+ENV VIRTUAL_ENV=/src/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Install dependencies:
+#COPY requirements.txt .
+#RUN pip install -r requirements.txt
+
+
+RUN pip -q install pip --upgrade
+
+
+WORKDIR src/
+COPY . .
+
+RUN pip install jupyterhub
+RUN pip install jupyterlab notebook  
+RUN pip install dockerspawner
+
+CMD ["jupyterhub", "--port=8000", "--ip=0.0.0.0"]

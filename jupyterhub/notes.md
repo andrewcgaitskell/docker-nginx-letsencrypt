@@ -1,6 +1,14 @@
+# sudo
+
+# install python
+
+apt install python3
+
 # install virtual env
 
-sudo apt install -y python3-venv
+apt install -y python3-venv
+
+
 
 # create jupyterhub folder
 
@@ -13,13 +21,15 @@ python3 -m venv env
 
 # activate env
 
-source venv/bin/activate
+source env/bin/activate
 
 # install jupyterhub
 
 https://jupyterhub.readthedocs.io/en/stable/quickstart.html
 
 python3 -m pip install jupyterhub
+
+# install node js
 
 npm install -g configurable-http-proxy
 

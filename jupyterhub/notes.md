@@ -31,11 +31,28 @@ python3 -m pip install jupyterhub
 
 # install node js
 
+apt install nodejs
+
+apt install npm
+
+# install proxy
+
 npm install -g configurable-http-proxy
 
 python3 -m pip install jupyterlab notebook  # needed if running the notebook servers in the same environment
 
+# set up user to run jupyterhub
 
+https://github.com/jupyterhub/jupyterhub/wiki/Using-sudo-to-run-JupyterHub-without-root-privileges
+
+
+
+
+# freeze container
+
+as ubuntu-jupyterhub1
+
+as 
 
 download
 

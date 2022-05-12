@@ -1,3 +1,16 @@
+# List Images
+
+docker image ls
+
+# List all Containers
+
+docker ps -a
+
+# Bash into Active Container
+
+docker run -i -t ac435678f60e bash
+
+
 # Remove all Images
 
 docker rmi -f $(sudo docker images -aq)
@@ -10,9 +23,17 @@ docker rm -vf $(sudo docker ps -aq)
 
 docker pull jupyter/base-notebook:latest
 
+# Remove Network
+
+docker network rm jupyterhub
+
 # Create Network
 
 docker network create -d bridge jupyterhub
+
+# Docker Port Permissions
+
+chmod 666 /var/run/docker.sock
 
 
 # Make Image

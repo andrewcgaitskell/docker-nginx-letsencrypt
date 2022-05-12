@@ -9,7 +9,7 @@ version: '3'
 
 services:
   jupyterhub:
-    build: jupyterhub_dockerfile
+    build: .
     image: jupyterhub_dockerfile
     container_name: jupyterhub_dockerfile
     volumes:

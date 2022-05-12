@@ -11,7 +11,12 @@ services:
       - mysql-data:/var/lib/mysql
 
   jupyterhub:
-    build: jupyterhub
+    build:
+      context: ./jupyterhub
+      dockerfile: Dockerfile
+      args:
+        buildno: 1
+    
     image: jupyterhub_dockerfile
     container_name: jupyterhub
     volumes:
